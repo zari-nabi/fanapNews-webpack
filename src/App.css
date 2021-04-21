@@ -1,0 +1,9 @@
+/* h1{
+    color: teal
+} */
+
+body{
+    direction: rtl;
+      text-align: right !important;
+
+}
