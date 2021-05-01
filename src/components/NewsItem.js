@@ -1,30 +1,46 @@
 import React from "react";
 import Button from "./Button";
-// import img from "../assets/img/values-1.png";
 import { UpIcon } from './Icons';
 
-export default function NewsItem({ title, description, isLogedIn, onClick, image }) {
+export default function NewsItem({ id,title, description, isLogedIn, handleUp, handleDown, image }) {
     return (
-        <div className="row g-0  rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative p-5" >
-            <div class="col-auto d-none d-lg-block">
-                {/* <img src={img} className="rounded float-end" alt="news" width={300} /> */}
-            </div>
-            <div className="col p-4 d-flex flex-column position-static">
-                <h3 >{title}</h3>
-                <p className="mb-auto">{description}</p>
-            </div>
+        <>
+            <div className="row faq-item d-flex align-items-stretch" data-aos="fade-up" data-aos-delay={100}>
 
-            {isLogedIn &&
-                <div className="col-md-1" >
-                    <div className="mb-5">
-                        <Button onClick={onClick} className="btn btn-transparent btn-lg px-4 rounded">
-                            <UpIcon onClick={onClick} className="btn btn-primary btn-lg px-4 rounded"/>
-                            </Button>
+                <div className="col-lg-4">
+
+                    <div className="col-auto d-none d-lg-block">
+                        <img src={image} className="rounded float-end" alt="news" width={300} />
                     </div>
+
                 </div>
-            }
+                <div className="col-lg-8">
+                    <div className="d-flex align-items-stretch justify-content-between">
+                    <h4><span>{`${id} - `}</span><strong>{title}</strong></h4>
 
+                    {isLogedIn &&
+                        <div className="d-flex align-items-top">
+                         
+                            <div className="icon-box mb-4 mx-2" >
+                                <Button onClick={handleUp} className="icon">
+                                <i class="icofont-simple-up"></i>
+                                    {/* <UpIcon className="btn btn-primary btn-lg px-4 rounded" /> */}
+                                </Button>
+                            </div>
+                            <div className="icon-box mb-4" >
+                                <Button onClick={handleDown} className="icon">
+                                <i class="icofont-simple-down"></i>
+                                    {/* <UpIcon className="btn btn-primary btn-lg px-4 rounded" /> */}
+                                </Button>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                    
+                    <p>{description}</p>
+                </div>
+            </div>
 
-        </div>
+        </>
     )
 }

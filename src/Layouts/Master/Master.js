@@ -7,7 +7,7 @@ function MasterPage (props) {
     return (
         <Fragment>
 
-            <Header />
+            <Header handleClick={props.handleClick}/>
             {props.children}
             <Footer />
 

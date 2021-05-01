@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import NewsList from "../../components/NewsList";
 import { NewsContext } from "../../contexts";
 import getNews from "../../fakeJsons/getNews";
-import MasterPage from "../../Layouts/Master/Master";
-import hero from "../../assets/img/hero-img.png";
+import Hero from "../../components/Hero";
+import MainNews from "../../components/MainNews";
+import SimpleText from "../../components/SimpleText";
 
 export default function Home() {
-    const { allNews } = useContext(NewsContext);
+    const { allNews, padNews } = useContext(NewsContext);
+    console.log('pad', padNews)
 
     const [news, setNews] = useState([]);
 
@@ -16,31 +18,28 @@ export default function Home() {
 
     return (
         <>
-            <section>
-                <div className="container col-xxl-8 px-4 py-5">
-                    <div className="row flex-lg-row-reverse align-items-center g-5 py-5">
-                        <div className="col-10 col-sm-8 col-lg-6">
-                            <img src={hero} className="d-block mx-lg-auto img-fluid" alt="news Themes" loading="lazy" />
-                        </div>
-                        <div className="col-lg-6">
-                            <h1 className="display-5 fw-bold lh-1 mb-3">آخرین خبرهای روز</h1>
-                            <p className="lead">اجتماعی سیاسی فرهنگی سلامتی ورزشی ...</p>
-                            <div className="d-grid gap-2 d-md-flex justify-content-md-start">
-                                <a href="#more" className="btn btn-primary btn-lg px-4 me-md-2">مشاهده</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <section id="hero">
+                <Hero />
 
             </section>
-
-            <section id="more">
-                <div className="container animated fadeInDown">
-                    <div className="row row-cols-1">
-                        <NewsList items={allNews} />
-                    </div>
-                </div>
+            <section id="about" className="about">
+                <SimpleText
+                    title="درباره ما"
+                    description1="«سرزمین هوشمند پاد» پلتفرمی جامع و چند سویه است که با ارائه راهکارهایی متنوع از حوزه‌ها و بخش‌های مختلف، محصولات و امکاناتی گوناگون را در راستای تحقق زندگی بهتر برای مصرف کنندگان و افزایش سطح رضایت شهروندان از زندگی عرضه می‌کند."
+                    description2="پاد در حقیقت یک پلتفرم تنها نیست، بلکه مجموعه‌ای از پلتفرم‌ها و ده‌ها محصول است که مانند یک اکوسیستم یکپارچه و فعال بر بستر پلتفرمی جامع و زیرساختی بنیان شده است. پاد با ارائه محصولاتی کاربردی و همراهی جامعه‌ای بی‌شمار از مشتریان و همکاران، بستری ایمن و خلاقانه برای فعالیت‌های فناورانه خواهد بود که تجربه‌ای عملیاتی و ثابت شده را به همراه دارد." />
             </section>
+            <section id="why-us" className="why-us section-bg">
+                <MainNews
+                    title="اخبار پاد"
+                    description=""
+                    items={padNews}
+                />
+            </section>
+            <section id="faq" className="faq">
+            <NewsList items={allNews} title="خبرهای روز"/>
+            </section>
+
+           
         </>
 
     )

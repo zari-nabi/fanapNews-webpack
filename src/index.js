@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from "react-router-dom";
 
 import './index.css';
-import './App.css';
 import App from './App';
 import bootstrap from 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -13,3 +12,5 @@ ReactDOM.render(
         <App />
     </BrowserRouter>
     , document.getElementById('root'));
+
+    // serviceWorker.unregister();

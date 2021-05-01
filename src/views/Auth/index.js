@@ -12,6 +12,7 @@ const Auth = () => {
     const auth = useContext(NewsContext)
 
     const [message, setMessage] = useState('');
+    const [messageSuccess, setMessageSuccess] = useState('');
 
     const [formState, dispatch] = useReducer(formReducer, {
         inputs: {
@@ -40,7 +41,12 @@ const Auth = () => {
     const history = useHistory();
 
     const handleSubmit = event => {
-        event.preventDefault()
+        event.preventDefault();
+
+        if(!formState.inputs.email.value || !formState.inputs.password.value){
+            setMessage("لطفا ایمیل و پسورد را وارد کنید");
+            return;
+        }
 
         console.log(formState.inputs);
         const allUser = auth.allUsers;
@@ -50,7 +56,7 @@ const Auth = () => {
             user.password === formState.inputs.password.value);
 
         if (user) {
-            setMessage("خوش آمدید");
+            setMessageSuccess("خوش آمدید");
             localStorage.setItem("token", JSON.stringify(user.email));
             auth.login(user.email);
             history.push('/news');
@@ -66,11 +72,17 @@ const Auth = () => {
     const handleRegister = event => {
         event.preventDefault();
 
+        if(!formState.inputs.email.value || !formState.inputs.password.value){
+            setMessage("لطفا ایمیل و پسورد را وارد کنید");
+            return;
+        }
+
         const allUser = auth.allUsers;
         const user = allUser.find(user => user.email === formState.inputs.email.value)
 
         if (user) {
             setMessage("این ایمیل قبلا ثبت شده");
+            setMessageSuccess(null);
         }
         else {
             allUser.push({
@@ -79,62 +91,80 @@ const Auth = () => {
                 password: formState.inputs.password.value
             });
             console.log(allUser);
-
-            setMessage("ثبت  نام با موفقیت انجام شد");
+            setMessage(null);
+            setMessageSuccess("ثبت  نام با موفقیت انجام شد");
         };
 
     }
 
     return (
-        <div className="container col-xl-10 col-xxl-8 px-4 py-5">
-            <div class="row align-items-center g-5 py-5">
+        <>
+            <section id="contact" className="contact section-bg">
+                <div className="top"></div>
+                <div className="container" data-aos="fade-up">
+                    <div className="section-title">
+                        <h2>LOGIN</h2>
+                        <p>ورود و ثبت نام</p>
+                    </div>
+                    <div className="row center  mb-4">
 
-
-                <main className="col-10 mx-auto col-lg-5">
-                    <form onSubmit={handleSubmit} className="p-5 rounded-3 bg-body shadow-sm">
-                        {/* <img className="mb-4" src="/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width={72} height={57} /> */}
-                        {/* <h1 className="h3 mt-3 mb-3 fw-normal">ورود</h1> */}
-
-                        <Input
-                            id="email"
-                            type="email"
-                            element="input"
-                            placeholder="name@example.com"
-                            label="ایمیل"
-                            validators={[validatorRequire()]}
-                            errorText="لطفا ایمیل معتبر وارد کنید."
-                            onInput={inputHandler}
-                        />
-
-                        <Input
-                            type="password"
-                            id="password"
-                            placeholder="رمز عبور"
-                            label="رمز عبور"
-                            errorText="پسورد شامل حداقل 6 کارکتر باشد"
-                            validators={[validatorRequire()]}
-                            onInput={inputHandler}
-                        />
-
-                        <div className="form-floating mt-3">
-                            <Button
-                                className="w-50 btn btn-lg btn-primary"
-                                type="submit"
-                                disabled={!formState.isValid}>
-                                ورود
-                        </Button>
-                            <Button
-                                className="w-50 btn btn-lg btn-light"
-                                onClick={handleRegister}
-                                disabled={!formState.isValid}>
-                                ثبت نام
-                        </Button>
-                            {message && <p className="mt-3 text-danger">{message}</p>}
+                        <div className="col-lg-6">
+                            <form onSubmit={handleSubmit} role="form" className="php-email-form">
+                                <Input
+                                    id="email"
+                                    type="email"
+                                    element="input"
+                                    placeholder="name@example.com"
+                                    label="ایمیل"
+                                    data-rule="email"
+                                    data-msg="لطفا ایمیل معتبر وارد کنید"
+                                    validators={[validatorRequire()]}
+                                    errorText="لطفا ایمیل معتبر وارد کنید."
+                                    onInput={inputHandler}
+                                />
+                                <Input
+                                    type="password"
+                                    id="password"
+                                    placeholder="رمز عبور"
+                                    label="رمز عبور"
+                                    errorText="پسورد شامل حداقل 4 کارکتر باشد"
+                                    data-rule="minlen:4"
+                                    data-msg="پسورد شامل حداقل 4 کارکتر باشد"
+                                    validators={[validatorRequire()]}
+                                    onInput={inputHandler}
+                                />
+                               
+                                <div className="mb-3">
+                                    <div className="loading">Loading</div>
+                                    {message && 
+                                    <div className="error-message"  data-aos="fade-down">{message}</div>
+                                    }
+                                    {messageSuccess && 
+                                    <div className="sent-message"  data-aos="fade-down">{messageSuccess}</div>
+                                    }
+                                </div>
+                                <div className="row mx-2 d-flex justify-content-between ">
+                                    <Button
+                                        type="submit"
+                                        // disabled={!formState.isValid}
+                                        >
+                                        ورود
+                                    </Button>
+                                    <Button
+                                        type="register"
+                                        onClick={handleRegister}
+                                        // disabled={!formState.isValid}
+                                        >
+                                        ثبت نام
+                                    </Button>
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </main>
-            </div>
-        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </>
     );
 };
 export default Auth;

@@ -23,18 +23,18 @@ const inputReducer = (state, action) => {
 
 
 const Input = props => {
-    const [inputState, dispatch] = useReducer(inputReducer , {
+    const [inputState, dispatch] = useReducer(inputReducer, {
         value: '',
         isValid: false,
         isBlured: false
-    })
+    });
     const { id, onInput } = props;
     const { value, isValid } = inputState;
 
     useEffect(() => {
         onInput(id, value, isValid)
     }, [id, value, isValid, onInput]);
-    
+
     const changeHandler = event => {
         dispatch({
             type: 'CHANGE',
@@ -48,26 +48,32 @@ const Input = props => {
         })
     }
 
+    const { label, rule, msg, type, placeholder, errorText } = props;
 
     return (
-        <div className="form-floating">
-            <label htmlFor="floatingInput">{props.label}</label>
-            <input
-                className="form-control"
-                type={props.type}
-                id={props.id}
-                placeholder={props.placeholder}
-                onChange={changeHandler}
-                value={inputState.value}
-                onBlur={blurHandler}
-            />
-            {
-                !inputState.isValid &&
-                inputState.isBlured &&
-                <p className="text-danger small mt-2">{props.errorText}</p>
-            }
-        </div>
+        <>
 
+            <div className="form-floating form-group row mx-2">
+                <label htmlFor="floatingInput">{label}</label>
+                <input
+                    className="form-control"
+                    data-rule={rule}
+                    data-msg={msg}
+                    type={type}
+                    id={id}
+                    placeholder={placeholder}
+                    onChange={changeHandler}
+                    value={inputState.value}
+                    onBlur={blurHandler}
+                />
+                {/* <div className="validate" /> */}
+                {
+                    !inputState.isValid &&
+                    inputState.isBlured &&
+                    <p className="text-danger small mt-2">{errorText}</p>
+                }
+            </div>
+        </>
     )
 }
 

@@ -3,12 +3,13 @@ import React, { useState, useCallback, useEffect, useMemo } from "react";
 import _ from "lodash";
 
 import { ToastContainer } from 'react-toastify';
-import NavBar from "./components/Navbar";
 import Routes from './routes';
 import { NewsProvider, NewsContext } from "./contexts";
 import getNews from "./fakeJsons/getNews";
 import getUsers from "./fakeJsons/getUsers";
+import getPadNews from "./fakeJsons/getPadNews";
 import MasterPage from "./Layouts/Master/Master";
+// import "./assets/css/style.css";
 
 const App = () => {
 
@@ -16,6 +17,8 @@ const App = () => {
   const [isLogedIn, setIsLogedIn] = useState(false);
   const [allNews, setAllNews] = useState([]);
   const [allUsers, setAllUsers] = useState([]);
+  const [padNews, setPadNews] = useState([]);
+  const [toggle, setToggle] = useState(true);
 
   const login = useCallback((userId) => {
     setIsLogedIn(true);
@@ -42,7 +45,14 @@ const App = () => {
   useEffect(() => {
     setAllNews(getNews.items);
     setAllUsers(getUsers.items);
+    setPadNews(getPadNews.items);
   }, []);
+
+
+  const handleClickToggle = () => {
+    setToggle(!toggle);
+    console.log(toggle)
+  }
 
   const memoizedValue = useMemo(() => ({
     isLogedIn,
@@ -54,15 +64,20 @@ const App = () => {
     allNews,
     setAllNews,
     login,
-    logout
+    logout,
+    padNews,
+    setPadNews,
+    toggle,
+    setToggle
   }),
-    [isLogedIn, userId, allNews, allUsers, login, logout]
+    [isLogedIn, userId, allNews, allUsers, padNews, login, logout, toggle]
   );
 
 
   return (
     <NewsProvider value={memoizedValue}>
-      <MasterPage>
+      <MasterPage handleClick={handleClickToggle}>
+        <link rel="stylesheet" href={`${process.env.PUBLIC_URL}/${toggle ? 'assets/css/style.css' : 'assets/css/style-dark.css'}`} />
         <ToastContainer />
         {/* <NavBar /> */}
         <Routes />
