@@ -1,3 +1,33 @@
+import React from "react";
+import styled from "styled-components";
+
+const bgLight = "#fff";
+const bgDark = "#1c232b";
+const colorLight = "#0b2341";
+const colorDark = "#d9e4f3";
+
+const generalBgLight = "#f6f9fd";
+const generalBgDark = "#1c232b";
+
+const secondaryColorLight = "#0f2f57";
+const secondaryColorDark = "#eff";
+
+const colorWhyLight ="#123a6d";
+const colorWhyDark ="#d9e4f3";
+const bgWhyDark = "#272e35"
+
+
+const footerBgLight = "#071527";
+const footerBgDark = "#97999e";
+
+const shadowLight = "0px 2px 15px rgba(0, 0, 0, 0.1)";
+const shadowDark = "0px 2px 15px rgba(255, 255, 255, 0.1)";
+
+const shadowContactLight = "0 0 30px rgba(214, 215, 216, 0.6)";
+const shadowContactDark = "0 0 30px rgba(50, 50, 50, 0.6)";
+
+
+export const AppStyle = styled.div`
 /**
 * Template Name: Multi - v2.2.1
 * Template URL: https://bootstrapmade.com/multi-responsive-bootstrap-template/
@@ -8,19 +38,12 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-@font-face {
-  font-family: 'Vazir-FD';
-  src: url('../fonts/Vazir-FD.woff')
-}
 
-body {
-  font-family: 'Vazir-FD';
-  color: #444444;
-}
 
-/* body {
-  font-family: "Open Sans", sans-serif;
-} */
+  font-family: 'Vazir-FD';
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
+
 
 a {
   color: #ed502e;
@@ -46,7 +69,7 @@ h1, h2, h3, h4, h5, h6 {
   bottom: 0;
   z-index: 9999;
   overflow: hidden;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
 }
 
 #preloader:before {
@@ -101,20 +124,20 @@ h1, h2, h3, h4, h5, h6 {
   height: 40px;
   border-radius: 4px;
   background: #ed502e;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   transition: all 0.4s;
 }
 
 .back-to-top i:hover {
   background: #f06f54;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
   transition: all 0.5s;
   z-index: 997;
   padding: 20px 0;
@@ -122,7 +145,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #header.header-scrolled {
   padding: 12px 0;
-  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: ${({ theme }) => theme === true ? shadowLight : shadowDark};
 }
 
 #header .logo {
@@ -136,7 +159,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #header .logo a {
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 #header .logo img {
@@ -173,7 +196,7 @@ h1, h2, h3, h4, h5, h6 {
 .nav-menu a {
   display: block;
   position: relative;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   transition: 0.3s;
   font-size: 14px;
   font-family: 'Vazir-FD';
@@ -192,7 +215,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   visibility: hidden;
   padding: 10px 0;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
 }
@@ -213,7 +236,7 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 14px;
   font-weight: 500;
   text-transform: none;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .nav-menu .drop-down ul a:hover, .nav-menu .drop-down ul .active > a, .nav-menu .drop-down ul li:hover > a {
@@ -302,7 +325,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-toggle i {
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .mobile-nav {
@@ -313,7 +336,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 15px;
   z-index: 9999;
   overflow-y: auto;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
   transition: ease-in-out 0.2s;
   opacity: 0;
   visibility: hidden;
@@ -330,7 +353,7 @@ h1, h2, h3, h4, h5, h6 {
 .mobile-nav a {
   display: block;
   position: relative;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   padding: 10px 20px;
   font-weight: 500;
   outline: none;
@@ -389,7 +412,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-active .mobile-nav-toggle i {
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 /*--------------------------------------------------------------
@@ -509,7 +532,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #hero .carousel-indicators li {
   cursor: pointer;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
   overflow: hidden;
   border: 0;
   width: 12px;
@@ -581,7 +604,7 @@ section {
 }
 
 .section-bg {
-  background-color: #f6f9fd;
+  background-color: ${({ theme }) => theme === true ? generalBgLight : generalBgDark};
 }
 
 .section-title {
@@ -616,7 +639,7 @@ section {
   font-weight: 700;
   text-transform: uppercase;
   font-family: 'Vazir-FD';
-  color: #0f2f57;
+  color:  ${({ theme }) => theme === true ? secondaryColorLight : secondaryColorDark};
 }
 
 /*--------------------------------------------------------------
@@ -673,7 +696,7 @@ section {
 
 .about .content .btn-learn-more:hover {
   background: #ed502e;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   text-decoration: none;
 }
 
@@ -702,7 +725,7 @@ section {
   line-height: 24px;
   display: block;
   font-weight: 700;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   margin-left: 50px;
 }
 
@@ -732,6 +755,7 @@ section {
 --------------------------------------------------------------*/
 .why-us {
   padding: 0;
+  background:${({ theme }) => theme !== true && bgWhyDark};
 }
 
 .why-us .content {
@@ -741,7 +765,7 @@ section {
 .why-us .content h3 {
   font-weight: 400;
   font-size: 34px;
-  color: #123a6d;
+  color: ${({ theme }) => theme === true ? colorWhyLight : colorWhyDark};
 }
 
 .why-us .content h4 {
@@ -778,7 +802,7 @@ section {
 
 .why-us .accordion-list li {
   padding: 20px;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
   border-radius: 4px;
 }
 
@@ -791,7 +815,7 @@ section {
   font-weight: 500;
   padding-right: 30px;
   outline: none;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .why-us .accordion-list span {
@@ -818,7 +842,7 @@ section {
 }
 
 .why-us .accordion-list a.collapsed {
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .why-us .accordion-list a.collapsed:hover {
@@ -972,7 +996,7 @@ section {
 }
 
 .services .icon-box .icon i {
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   font-size: 28px;
 }
 
@@ -997,7 +1021,7 @@ section {
 }
 
 .services .icon-box h4 a {
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .services .icon-box p {
@@ -1012,7 +1036,7 @@ section {
 }
 
 .services .icon-box:hover .icon {
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
 }
 
 .services .icon-box:hover .icon i {
@@ -1024,7 +1048,7 @@ section {
 }
 
 .services .icon-box:hover h4 a, .services .icon-box:hover p {
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 
@@ -1043,7 +1067,7 @@ section {
   min-height: 200px;
   box-shadow: 0px 0px 20px 0px rgba(11, 35, 65, 0.1);
   position: relative;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
 }
 
 .testimonials .testimonial-item .testimonial-img {
@@ -1131,13 +1155,13 @@ section {
 }
 
 .cta h3 {
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   font-size: 28px;
   font-weight: 700;
 }
 
 .cta p {
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .cta .cta-btn {
@@ -1178,7 +1202,7 @@ section {
   font-weight: 600;
   line-height: 1;
   text-transform: uppercase;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   margin-bottom: 5px;
   transition: all 0.3s ease-in-out;
 }
@@ -1209,9 +1233,9 @@ section {
 
 .portfolio .portfolio-item .portfolio-info h4 {
   font-size: 18px;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   font-weight: 600;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .portfolio .portfolio-item .portfolio-info p {
@@ -1247,7 +1271,7 @@ section {
 }
 
 .portfolio .portfolio-item .portfolio-links a {
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   margin: 0 2px;
   font-size: 28px;
   display: inline-block;
@@ -1296,14 +1320,14 @@ section {
   font-weight: 700;
   margin-bottom: 2px;
   font-size: 18px;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .team .member .member-info-content span {
   font-style: italic;
   display: block;
   font-size: 13px;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .team .member .social {
@@ -1320,7 +1344,7 @@ section {
 .team .member .social a {
   transition: color 0.3s;
   display: block;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   margin-top: 15px;
 }
 
@@ -1360,7 +1384,7 @@ section {
   padding: 80px 40px;
   margin-bottom: 30px;
   box-shadow: 0px 5px 90px 0px rgba(110, 123, 131, 0.1);
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
   text-align: center;
 }
 
@@ -1372,7 +1396,7 @@ section {
 
 .pricing h4 {
   font-size: 46px;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   font-weight: 400;
   font-family: 'Vazir-FD';
   margin-bottom: 25px;
@@ -1418,18 +1442,18 @@ section {
   display: inline-block;
   padding: 10px 40px 11px 40px;
   border-radius: 4px;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   transition: none;
   font-size: 14px;
   font-weight: 600;
   transition: 0.3s;
   border: 2px solid #0b2341;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
 }
 
 .pricing .get-started-btn:hover {
   background: #0b2341;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .pricing .featured {
@@ -1440,7 +1464,7 @@ section {
 
 .pricing .featured .get-started-btn {
   background: #ed502e;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   border-color: #ed502e;
 }
 
@@ -1568,11 +1592,11 @@ section {
 # Contact
 --------------------------------------------------------------*/
 .contact .info-box {
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
   text-align: center;
   box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
   padding: 20px 0 30px 0;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
 }
 
 .contact .info-box i {
@@ -1598,9 +1622,9 @@ section {
 }
 
 .contact .php-email-form {
-  box-shadow: 0 0 30px rgba(214, 215, 216, 0.6);
+  box-shadow: ${({ theme }) => theme === true ? shadowContactLight : shadowContactDark};
   padding: 30px;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
 }
 
 .contact .php-email-form .validate {
@@ -1637,7 +1661,7 @@ section {
 
 .contact .php-email-form .loading {
   display: none;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
   text-align: center;
   padding: 15px;
 }
@@ -1727,7 +1751,7 @@ section {
 --------------------------------------------------------------*/
 .breadcrumbs {
   padding: 15px 0;
-  background: #f6f9fd;
+  background: ${({ theme }) => theme === true ? generalBgLight : generalBgDark};
   min-height: 40px;
   margin-top: 82px;
 }
@@ -1741,7 +1765,7 @@ section {
 .breadcrumbs h2 {
   font-size: 28px;
   font-weight: 600;
-  color: #0b2341;
+  color: ${({ theme }) => theme === true ? colorLight : colorDark};
 }
 
 .breadcrumbs ol {
@@ -1803,7 +1827,7 @@ section {
   position: absolute;
   right: 0;
   bottom: -70px;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? bgLight : bgDark};
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
   z-index: 2;
 }
@@ -1855,9 +1879,9 @@ section {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-  background: #071527;
+  background: ${({ theme }) => theme === true ? footerBgLight : footerBgDark};
   padding: 0 0 30px 0;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorDark : colorLight};
   font-size: 14px;
 }
 
@@ -1891,7 +1915,7 @@ section {
 #footer .footer-top .social-links a {
   font-size: 18px;
   display: inline-block;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorDark : colorLight};
   line-height: 1;
   padding: 8px 0;
   margin-right: 4px;
@@ -1904,7 +1928,7 @@ section {
 }
 
 #footer .footer-top .social-links a:hover {
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorDark : colorLight};
   background: #ed502e;
   text-decoration: none;
 }
@@ -1912,7 +1936,7 @@ section {
 #footer .footer-top h4 {
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorDark : colorLight};
   position: relative;
   padding-bottom: 12px;
 }
@@ -1945,7 +1969,7 @@ section {
 }
 
 #footer .footer-top .footer-links ul a {
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorDark : colorLight};
   transition: 0.3s;
   display: inline-block;
   line-height: 1;
@@ -1957,7 +1981,7 @@ section {
 
 #footer .footer-top .footer-newsletter form {
   margin-top: 30px;
-  background: #fff;
+  background:  ${({ theme }) => theme === true ? colorDark : colorLight};
   padding: 6px 10px;
   position: relative;
   border-radius: 4px;
@@ -1979,7 +2003,7 @@ section {
   font-size: 16px;
   padding: 0 20px 2px 20px;
   background: #ed502e;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorDark : colorLight};
   transition: 0.3s;
   border-radius: 0 4px 4px 0;
 }
@@ -1989,7 +2013,7 @@ section {
 }
 
 #footer .copyright {
-  border-top: 1px solid #0f2f57;
+  border-top: 1px solid  ${({ theme }) => theme === true ? secondaryColorLight : secondaryColorDark};
   text-align: center;
   padding-top: 30px;
 }
@@ -1998,7 +2022,7 @@ section {
   padding-top: 10px;
   text-align: center;
   font-size: 13px;
-  color: #fff;
+  color: ${({ theme }) => theme === true ? colorDark : colorLight};
 }
 
 @media (max-width: 575px) {
@@ -2006,3 +2030,5 @@ section {
     margin: -20px 0 30px 0;
   }
 }
+
+`;

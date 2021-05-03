@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react';
 import NavBar from './../../components/Navbar';
-// import logo from "../../../assets/img/fanap-logo.png";
 
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
@@ -12,7 +11,7 @@ console.log(props)
         <Fragment>
             <header id="header" className="fixed-top">
                 <div className="container d-flex align-items-center ">
-                   {/* <Toggler onClick={props.handleClick}/> */}
+                   <Toggler onClick={props.handleClick}/>
                     {/* <Link to="/#about" className="get-started-btn">درباره ما</Link> */}
                     <NavBar />
                     <h1 className="logo mr-auto"><Link to="/">فناپ</Link></h1>

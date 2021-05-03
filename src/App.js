@@ -9,7 +9,7 @@ import getNews from "./fakeJsons/getNews";
 import getUsers from "./fakeJsons/getUsers";
 import getPadNews from "./fakeJsons/getPadNews";
 import MasterPage from "./Layouts/Master/Master";
-// import "./assets/css/style.css";
+import { AppStyle } from "./app.style";
 
 const App = () => {
 
@@ -76,13 +76,16 @@ const App = () => {
 
   return (
     <NewsProvider value={memoizedValue}>
+   
+      <AppStyle theme={toggle}>
       <MasterPage handleClick={handleClickToggle}>
-        <link rel="stylesheet" href={`${process.env.PUBLIC_URL}/${toggle ? 'assets/css/style.css' : 'assets/css/style-dark.css'}`} />
+        {/* <link rel="stylesheet" href={`${process.env.PUBLIC_URL}/${toggle ? 'assets/css/style.css' : 'assets/css/style-dark.css'}`} /> */}
         <ToastContainer />
-        {/* <NavBar /> */}
         <Routes />
 
       </MasterPage>
+
+      </AppStyle>
     </NewsProvider>
   );
 };

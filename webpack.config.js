@@ -48,9 +48,7 @@ module.exports = {
     ]
   },
   plugins: [
-    // new HtmlWebpackPlugin({ template: './src/index.html' }),
-    // new webpack.EnvironmentPlugin({ ...process.env }),
-
+  
     new webpack.EnvironmentPlugin({
       NODE_ENV:'developement', 
       PUBLIC_URL:"http://localhost:3030"
